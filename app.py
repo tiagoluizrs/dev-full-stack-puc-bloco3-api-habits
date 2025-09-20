@@ -2,8 +2,13 @@ from flask import Flask
 from flask_migrate import Migrate
 from config import Config
 from models import db
+from flask_cors import CORS
+
 app = Flask(__name__)
 app.config.from_object(Config)
+
+# Configuração do Flask-CORS
+CORS(app, origins=["http://localhost:3000"])
 
 db.init_app(app)
 migrate = Migrate(app, db)
