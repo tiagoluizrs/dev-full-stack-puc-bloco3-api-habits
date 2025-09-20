@@ -1,0 +1,9 @@
+Flask
+Flask-Migrate
+flask
+flask-Migrate
+Flask-SQLAlchemy
+python-dotenv
+PyJWT
+psycopg2-binary
+requests

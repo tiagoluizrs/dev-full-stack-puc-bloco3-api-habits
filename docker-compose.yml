@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+#  api-habit:
+#    build: .
+#    ports:
+#      - "5001:5001"
+#    environment:
+#      - FLASK_ENV=development
+#      - DATABASE_URL=postgresql://postgres:postgres@habit-db:5432/habitsdb
+#    depends_on:
+#      - habit-db
+#    restart: always
+
+  habit-db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: habitsdb
+    ports:
+      - "5435:5432"
+    volumes:
+      - habit_pgdata:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  habit_pgdata:
