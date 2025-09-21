@@ -5,9 +5,10 @@
 Esta API gerencia hábitos sustentáveis dos usuários, permitindo criar, listar, atualizar e excluir hábitos relacionados à economia de energia, transporte e alimentação. Ela calcula o impacto ambiental dos hábitos, como energia economizada e carbono não emitido, integrando dados externos para estimativas precisas.
 
 ## Pré-requisitos
+- Docker e Docker Compose (opcional, para rodar com Docker)
+- Aplicação Auth API
 
 - É necessário que a API de autenticação (`api-auth`) esteja rodando para que você possa obter o token JWT via login. A documentação da `api-auth` está disponível no próprio projeto.
-- Docker e Docker Compose instalados.
 
 ## Como rodar com Docker
 
