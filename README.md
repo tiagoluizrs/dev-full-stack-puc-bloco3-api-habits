@@ -19,6 +19,8 @@ Esta API gerencia hábitos sustentáveis dos usuários, permitindo criar, listar
 docker-compose up --build
 ```
 
+>> Se ao rodar o build der erro na api, aguarde o banco subir e reinicie que irá funcionar.
+
 O serviço estará disponível na porta definida (exemplo: 5003).
 
 ## Como testar os endpoints
