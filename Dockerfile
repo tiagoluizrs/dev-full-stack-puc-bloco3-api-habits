@@ -11,8 +11,13 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copiar código da aplicação
 COPY . .
 
-# Expor a porta da API-habit (ex: 5001)
-EXPOSE 5001
+# Copiar script wait-for-db.sh
+COPY wait-for-db.sh /wait-for-db.sh
+RUN chmod +x /wait-for-db.sh
 
-# Comando para rodar a aplicação
-CMD ["flask", "run", "--host=0.0.0.0", "--port=5001"]
+# Expor a porta da API-habit (ex: 5001)
+EXPOSE 5003
+
+RUN chmod +x entrypoint.sh
+# Comando para rodar a aplicação via entrypoint
+ENTRYPOINT ["sh", "entrypoint.sh"]

@@ -1,17 +1,19 @@
 version: '3.8'
 services:
-#  api-habit:
-#    build: .
-#    ports:
-#      - "5001:5001"
-#    environment:
-#      - FLASK_ENV=development
-#      - DATABASE_URL=postgresql://postgres:postgres@habit-db:5432/habitsdb
-#    depends_on:
-#      - habit-db
-#    restart: always
+  habits-auth:
+    build: .
+    ports:
+      - "5003:5003"
+    environment:
+      - FLASK_ENV=development
+      - SQLALCHEMY_DATABASE_URI=postgresql://postgres:postgres@habits-db:5432/habitsdb
+    depends_on:
+      - habits-db
+    restart: always
+    networks:
+      - authnet
 
-  habit-db:
+  habits-db:
     image: postgres:15
     environment:
       POSTGRES_USER: postgres
@@ -20,8 +22,14 @@ services:
     ports:
       - "5435:5432"
     volumes:
-      - habit_pgdata:/var/lib/postgresql/data
+      - habits_pgdata:/var/lib/postgresql/data
     restart: always
+    networks:
+      - authnet
 
 volumes:
-  habit_pgdata:
+  habits_pgdata:
+
+networks:
+  authnet:
+    external: true

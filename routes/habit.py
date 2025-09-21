@@ -4,7 +4,7 @@ from functools import wraps
 from controllers.habit import get_habit_by_id, list_habits, create_habit, delete_habit, update_habit, dashboard_habits
 import os
 
-AUTH_SERVICE_HOST = os.getenv('AUTH_SERVICE_HOST', 'http://127.0.0.1:5002')
+AUTH_SERVICE_HOST = os.getenv('AUTH_SERVICE_HOST', 'http://api-auth:5002')
 
 def token_required(f):
     @wraps(f)
