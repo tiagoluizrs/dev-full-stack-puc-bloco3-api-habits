@@ -1,8 +1,8 @@
 """create habit table
 
-Revision ID: 126d14e355f6
+Revision ID: de75d8f86103
 Revises: 
-Create Date: 2025-09-21 00:24:03.971169
+Create Date: 2025-09-21 14:10:15.239866
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '126d14e355f6'
+revision = 'de75d8f86103'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,9 +22,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('id_user', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=100), nullable=False),
-    sa.Column('category', sa.Text(), nullable=False),
     sa.Column('frequency', sa.Text(), nullable=False),
-    sa.Column('unit', sa.Text(), nullable=False),
     sa.Column('quantity', sa.Float(), nullable=False),
     sa.Column('start_date', sa.Date(), nullable=False),
     sa.Column('location', sa.String(length=100), nullable=False),

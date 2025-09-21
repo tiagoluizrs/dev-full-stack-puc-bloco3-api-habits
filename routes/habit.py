@@ -59,8 +59,9 @@ def register_habit_routes(app):
     @app.route('/habits/dashboard', methods=['GET'])
     @token_required
     def habit_dashboard():
-        user_id = getattr(request, 'user_id', None)
+        user_id = getattr(g, 'user_id', None)
+        params = request.args
         if not user_id:
             return jsonify({'error': 'User ID not found'}), 400
-        result, status = dashboard_habits(user_id)
+        result, status = dashboard_habits(user_id, params)
         return jsonify(result), status

@@ -1,14 +1,10 @@
 from models import db
 
-from enum import Enum
-
 class Habit(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     id_user = db.Column(db.Integer, nullable=False)
     name = db.Column(db.String(100), nullable=False)
-    category = db.Column(db.Text, nullable=False)
     frequency = db.Column(db.Text, nullable=False)
-    unit = db.Column(db.Text, nullable=False)
     quantity = db.Column(db.Float, nullable=False)
     start_date = db.Column(db.Date, nullable=False)
     location = db.Column(db.String(100), nullable=False)
