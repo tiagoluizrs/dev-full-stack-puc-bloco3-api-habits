@@ -1,8 +1,14 @@
-# dev-full-stack-puc-bloco3-api-habits
+# Sistema de Gestão de Hábitos Sustentáveis - API de gestão dos hábitos e dashboard
 
-## O que o projeto faz
+## O que o projeto faz (Descrição)
 
-Esta API gerencia hábitos sustentáveis dos usuários, permitindo criar, listar, atualizar e excluir hábitos relacionados à economia de energia, transporte e alimentação. Ela calcula o impacto ambiental dos hábitos, como energia economizada e carbono não emitido, integrando dados externos para estimativas precisas.
+Esta API gerencia hábitos sustentáveis dos usuários, permitindo criar, listar, atualizar e excluir hábitos relacionados à economia de energia. Com base nos hábitos criados, está API também se comunica com outra api externa chamada climatiq que calcula com base no kWh envaido quanto de CO² deixa de ser emitido na atmosfera.
+
+### Diagrama
+Cada um dos 3 projetos terá o mesmo diagrama, apenas com uma diferença que é a marcação de qual serviço ele representa.
+
+![Diagrama](./diagrama-habit.jpg)
+
 
 ## Pré-requisitos
 - Docker e Docker Compose (opcional, para rodar com Docker)
@@ -70,4 +76,29 @@ A API integra-se ao serviço Climatiq para estimar o impacto ambiental dos hábi
 - **Climatiq:** Estimativa de emissões de carbono baseada nos dados dos hábitos.
 - **Auth Service:** Validação de autenticação dos usuários via token JWT.
 
+Para se cadastrar no climatiq acesse: https://climatiq.io/ e vá até Get Started.
+
+Página de termos de uso: https://www.climatiq.io/terms onde fala a respeito da licença gratuita.
+
+Rota utilizada para fazer as requisições: https://api.climatiq.io/data/v1/estimate
+
+Exemplo de teste:
+```bash
+curl -X POST https://api.climatiq.io/data/v1/estimate \
+  -H "Authorization: Bearer <CLIMATE_API_KEY>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "emission_factor": {
+      "activity_id": "electricity-supply_grid-source_residual_mix",
+      "data_version": "^21"
+    },
+    "parameters": {
+      "energy": <valor_energy>,
+      "energy_unit": "kWh"
+    }
+  }'
+```
+
 Consulte o código e o docker-compose.yml para detalhes das variáveis de ambiente e configurações.
+
+Github do projeto: https://github.com/tiagoluizrs/dev-full-stack-puc-bloco3-api-habits
