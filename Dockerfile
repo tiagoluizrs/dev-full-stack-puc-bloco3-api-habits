@@ -18,7 +18,7 @@ RUN chmod +x /wait-for-db.sh
 # Expor a porta da API-habit (ex: 5001)
 EXPOSE 5003
 
-# RUN sleep 120 && echo "Aguardando 2 minutos antes de iniciar a aplicação, esperando o banco ser levantado..."
+# RUN sleep 60 && echo "Aguardando 1 minutos antes de iniciar a aplicação, esperando o banco ser levantado..."
 
 RUN chmod +x entrypoint.sh
 # Comando para rodar a aplicação via entrypoint
