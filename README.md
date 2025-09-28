@@ -11,10 +11,21 @@ Cada um dos 3 projetos terá o mesmo diagrama, apenas com uma diferença que é 
 
 
 ## Pré-requisitos
-- Docker e Docker Compose (opcional, para rodar com Docker)
-- Aplicação Auth API
-
+- Docker e Docker Compose (opcional, para rodar com Docker);
+- Aplicação Auth API precisa estar de pé antes dessa;
 - É necessário que a API de autenticação (`api-auth`) esteja rodando para que você possa obter o token JWT via login. A documentação da `api-auth` está disponível no próprio projeto.
+
+O arquivo .env_example tem o que você precisa para gerar o arquivo .env, caso mude alguma configuração, ajuste no .env.
+```
+FLASK_APP=app.py
+FLASK_ENV=development
+SECRET_KEY="RgaEbg4MChDY1teTUD6Ljj2TZIIR8C23LzK4tuzVyms="
+JWT_SECRET_KEY="RgaEbg4MChDY1teTUD6Ljj2TZIIR8C23LzK4tuzVyms="
+SQLALCHEMY_DATABASE_URI=postgresql://postgres:postgres@localhost:5432/habitsdb
+SQLALCHEMY_TRACK_MODIFICATIONS=False
+CLIMATE_API_KEY="4Z5ACS4NG57ZDEVNBTC0TZ3NC8"
+AUTH_SERVICE_HOST="http://api-auth:5002"
+```
 
 ## Como rodar com Docker
 
